@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   resources :users
+  get '/users/:id/password_edit', to: 'users#editpass', as: 'password_edit'
+  patch '/users/:id/password_edit', to: 'users#updatepass'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
