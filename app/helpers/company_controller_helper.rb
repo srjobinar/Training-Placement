@@ -1,0 +1,2 @@
+module CompanyControllerHelper
+end
