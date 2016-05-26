@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+  def index
+    @user = User.all
+    @company = Company.all
+  end
+
   def new
     @user = User.new
   end
@@ -29,8 +35,8 @@ class UsersController < ApplicationController
 
   def updatepass
     @user = User.find(params[:id])
-    @curr = user_params[:current_password]
-    param = {:password => user_params[:password],:password_confirmation => user_params[:password_confirmation] }
+    @curr = user_params_passedit[:current_password]
+    param = {:password => user_params_passedit[:password],:password_confirmation => user_params_passedit[:password_confirmation] }
     if  @user.authenticate(@curr)
        if @user.update_attributes(param)
          flash[:success] = "Password Successfully Updated"
@@ -57,6 +63,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :roll, :password, :password_confirmation, :current_password)
+    params.require(:user).permit(:name, :email, :roll)
+  end
+
+  def user_params_passedit
+    params.require(:user).permit(:password, :password_confirmation, :current_password)
   end
 end

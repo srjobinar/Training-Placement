@@ -1,0 +1,23 @@
+<% provide :title, 'New Company' %>
+<h1>Edit Company</h1>
+<div class="row">
+  <div class="col-md-6 col-xs-offset-3">
+<%= form_for(@company) do |f| %>
+  <%= render 'shared/error_messages_company' %>
+   <%= f.label :name %>
+   <%= f.text_field :name, class: "form-control" %>
+
+   <%= f.label :package %>
+   <%= f.text_field :package, class: "form-control" %>
+
+   <%= f.label :last_date, "Last Date to Apply" %>
+   <%= f.date_field :last_date, class: "form-control" %>
+
+   <%= f.label :exam_date %>
+   <%= f.date_field :exam_date, class: "form-control" %>
+
+   <%= f.submit "Save changes", class: "btn btn-primary" %>
+
+<% end %>
+ </div>
+</div>

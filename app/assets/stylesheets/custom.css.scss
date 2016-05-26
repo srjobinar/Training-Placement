@@ -111,7 +111,7 @@ footer ul li {
 
 /* forms */
 
-input, textarea, select {
+input, textarea, select, {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -135,6 +135,17 @@ input {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+
+/* index page */
+ ul {
+  list-style: none;
+}
+
+ ul li {
+  float: left;
+  margin-left: 15px;
 }
 
 /* miscellaneous */

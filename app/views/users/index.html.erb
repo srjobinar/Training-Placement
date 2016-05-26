@@ -1,0 +1,17 @@
+<% provide :title, "Index" %>
+<div class="row">
+  <div class="col-md-6">
+    <ul>
+    <% @user.each do |user| %>
+    <li><%= user.name %> : <%= user.roll %></li>
+    <% end %>
+  </ul>
+  </div>
+  <div class="col-md-6">
+    <ul>
+    <% @company.each do |company| %>
+    <li><%= company.name %> : <%= company.package %></li>
+    <% end %>
+  </ul>
+  </div>
+</div>
