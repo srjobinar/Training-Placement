@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :companies
   get '/users/:id/password_edit', to: 'users#editpass', as: 'password_edit'
   patch '/users/:id/password_edit', to: 'users#updatepass'
+  get '/register/:id', to: 'users#register'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_by(roll: params[:session][:roll].upcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      redirect_to users_path
     else
       flash.now[:danger] = "Invalid Roll Number/Password combination"
       render 'new'

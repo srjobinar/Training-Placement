@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+   belongs_to :branch
+   has_many :companies, through: :registers
+
    before_save {self.email = email.downcase}
    before_save {self.roll = roll.upcase }
 

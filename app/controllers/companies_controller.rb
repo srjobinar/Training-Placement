@@ -1,6 +1,7 @@
 class CompaniesController < ApplicationController
   def new
     @company = Company.new
+    @branches = Branch.all
   end
 
   def create
@@ -27,15 +28,16 @@ class CompaniesController < ApplicationController
     else
       render 'edit'
     end
+  end
 
   def show
     @company = Company.find(params[:id])
-  end
   end
 
   private
 
   def company_params
-    params.require(:company).permit(:name, :package, :last_date, :exam_date)
+    params.require(:company).permit(:name, :package, :last_date, :exam_date, branch_ids: [])
   end
+
 end

@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525171857) do
+ActiveRecord::Schema.define(version: 20160527133428) do
+
+  create_table "branchcompanies", force: :cascade do |t|
+    t.integer "branch_id"
+    t.integer "company_id"
+  end
+
+  add_index "branchcompanies", ["branch_id"], name: "index_branchcompanies_on_branch_id"
+  add_index "branchcompanies", ["company_id"], name: "index_branchcompanies_on_company_id"
+
+  create_table "branches", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -23,13 +36,26 @@ ActiveRecord::Schema.define(version: 20160525171857) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "registers", ["company_id"], name: "index_registers_on_company_id"
+  add_index "registers", ["user_id"], name: "index_registers_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "roll"
+    t.integer  "branch_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
   end
+
+  add_index "users", ["branch_id"], name: "index_users_on_branch_id"
 
 end

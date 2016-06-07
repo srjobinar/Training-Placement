@@ -16,6 +16,13 @@
    <%= f.label :exam_date %>
    <%= f.date_field :exam_date, class: "form-control" %>
 
+   <% Branch.all.each do |branch| %>
+    <label>
+       <%= check_box_tag "company[branch_ids][]", branch.id, f.object.branches.include?(branch) %>
+       <%= branch.name %>
+    </label>
+ <% end %>
+
    <%= f.submit "Register Company", class: "btn btn-primary" %>
 
 <% end %>

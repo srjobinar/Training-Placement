@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :is_logged_in?, only: [:index, :show, :edit, :update]
   def index
-    @user = User.all
+    @user = User.first
     @company = Company.all
   end
 
@@ -60,6 +61,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def register
+    redirect_to users_path
+  end
+
   private
 
   def user_params
@@ -68,5 +73,11 @@ class UsersController < ApplicationController
 
   def user_params_passedit
     params.require(:user).permit(:password, :password_confirmation, :current_password)
+  end
+
+  def is_logged_in?
+    if !logged_in?
+      redirect_to root_path
+    end
   end
 end
