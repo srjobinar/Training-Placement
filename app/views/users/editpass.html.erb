@@ -1,0 +1,20 @@
+<% provide :title, "Edit Password" %>
+<h1>Update your Password</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, url: password_edit_path) do |f| %>
+    <%= render 'shared/error_messages' %>
+
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, class: "form-control", required: "required" %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control", required: "required" %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control", required: "required" %>
+
+    <%= f.submit "Save Changes", class: "btn btn-primary" %>
+
+ <% end %>

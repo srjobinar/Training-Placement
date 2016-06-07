@@ -12,6 +12,7 @@
 
 body {
   padding-top: 60px;
+  background-color: #D24D57;
 }
 
 section {
@@ -108,10 +109,20 @@ footer ul li {
   margin-left: 15px;
 }
 
+/* index page */
+ ul {
+  list-style: none;
+}
+
+ ul li {
+  float: left;
+  margin-left: 15px;
+}
+
 
 /* forms */
 
-input, textarea, select {
+input, textarea, select, {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -127,6 +138,10 @@ input {
   ul{
     color: red;
     margin: 0 0 30px 0;
+    list-style: disc;
+  }
+  ul li{
+    float: none;
   }
 }
 
@@ -136,3 +151,62 @@ input {
     color: $state-danger-text;
   }
 }
+
+
+
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+.company-list{
+  background-color: #D24D57;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-radius: 4px;
+  padding: 10px;
+  h3{
+    margin-top: 10px;
+  }
+  p{
+    margin-bottom: 0px;
+  }
+}
+
+
+.page_section{
+  li{
+    width: 100%;
+  }
+  list-style: none;
+}
+
+.user_details {
+  h1{
+    margin-bottom: 0px;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: left;
+  }
+}
+
+   .navigation_bar{
+     background-color: black;
+     margin-top: 20px;
+     border-radius: 4px;
+//   padding: 3px;
+//   .row{
+//     margin-left: 1px;
+    }
+//   .navigation_pills{
+//     background-color: #E74C3C;
+//     margin-left: 5px;
+//     border-radius: 5px;
+//   }
+// }
