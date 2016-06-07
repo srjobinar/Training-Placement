@@ -61,6 +61,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def getcompanylist
+    @company =  Company.all
+    render json: @company
+  end
+
   def register
     redirect_to users_path
   end
