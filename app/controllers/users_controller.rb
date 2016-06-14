@@ -2,8 +2,9 @@ class UsersController < ApplicationController
 
   before_action :is_logged_in?, only: [:index, :show, :edit, :update]
   def index
-    @user = User.first
-    @company = Company.all
+    @user = current_user
+    @branch = @user.branch
+    @company = @branch.companies
   end
 
   def new

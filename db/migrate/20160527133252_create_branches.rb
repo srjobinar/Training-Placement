@@ -3,6 +3,7 @@ class CreateBranches < ActiveRecord::Migration
     create_table :branches do |t|
       t.string :name
       t.string :code
+      t.belongs_to :user, index:true
     end
   end
 end

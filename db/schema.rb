@@ -22,16 +22,21 @@ ActiveRecord::Schema.define(version: 20160527133428) do
   add_index "branchcompanies", ["company_id"], name: "index_branchcompanies_on_company_id"
 
   create_table "branches", force: :cascade do |t|
-    t.string "name"
-    t.string "code"
+    t.string  "name"
+    t.string  "code"
+    t.integer "user_id"
   end
+
+  add_index "branches", ["user_id"], name: "index_branches_on_user_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
+    t.text     "job_desc"
     t.integer  "package"
     t.date     "last_date"
     t.date     "exam_date"
     t.float    "cutoff"
+    t.string   "web_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +55,10 @@ ActiveRecord::Schema.define(version: 20160527133428) do
     t.string   "name"
     t.string   "email"
     t.string   "roll"
+    t.string   "phone"
+    t.integer  "cgpa"
+    t.integer  "x_th"
+    t.integer  "xii_th"
     t.integer  "branch_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
