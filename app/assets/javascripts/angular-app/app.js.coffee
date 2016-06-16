@@ -1,4 +1,4 @@
-@app = angular.module('app', [
+@app = angular.module('tnpApp', [
   'templates'
 ])
 
