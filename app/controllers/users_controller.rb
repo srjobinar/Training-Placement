@@ -63,7 +63,9 @@ class UsersController < ApplicationController
   end
 
   def getcompanylist
-    @company =  Company.all
+    @user = current_user
+    @branch = @user.branch
+    @company = @branch.companies
     render json: @company
   end
 
