@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :is_logged_in?, only: [:index, :show, :edit, :update]
+  before_action :is_logged_in?, only: [:index, :show, :edit, :update, :getcompanylist]
   def index
     @user = current_user
     @branch = @user.branch
@@ -63,7 +63,9 @@ class UsersController < ApplicationController
   end
 
   def getcompanylist
-    @company =  Company.all
+    @user = current_user
+    @branch = @user.branch
+    @company = @branch.companies
     render json: @company
   end
 

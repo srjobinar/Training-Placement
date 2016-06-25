@@ -1,18 +1,78 @@
 <% provide :title, "Index" %>
 
-<div class="container-fluid">
+<div class="container-fluid" ng-controller='UserIndexCtrl'>
+
   <div class="row">
-      <div class="col-md-5 col-md-offset-1 user_details">
+
+      <div class="col-md-6 user_details">
           <h1><%= @user.name %></h1>
           <p><%= @user.branch.name %></p>
       </div>
-      <div class="col-md-6 navigation_bar">
-          <ul class="nav nav-pills" role="tablist">
-            <li class="active"><a href="#">Available</a></li>
-            <li><a href="#">In Progress</a></li>
-            <li><a href="#">Completed</a></li>
-          </ul>
+
+      <div class="col-md-6">
+
+        <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-click="companyType(0)" name="page1">Available</md-nav-item>
+              <md-nav-item md-nav-click="companyType(1)" name="page2">In Progress</md-nav-item>
+              <md-nav-item md-nav-click="companyType(2)" name="page3">Completed</md-nav-item>
+        </md-nav-bar>
+
       </div>
+
+  </div>
+
+  <div class="row">
+
+     <div class="col-md-6">
+
+       Here are the companies that {{ message }}
+
+       Search: <input class="form-control" ng-model="query">
+
+       <div class="table-responsive">
+
+       <table class="table table-striped">
+
+         <thead>
+           <tr>
+             <th>NAME</th>
+             <th>ID</th>
+           </tr>
+         </thead>
+
+         <tbody>
+             <tr ng-repeat="c in companies | filter: query">
+               <td>{{c.name}}</td>
+               <td>{{c.id}}</td>
+             </tr>
+         </tbody>
+
+       </table>
+
+      </div>
+    </div>
+
+    <div class="col-md-6">
+
+      <md-card>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-headline">{{ selected_company.name }}</span>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-actions layout="row" layout-align="start center">
+        <md-button>{{action_name}}</md-button>
+        <md-button>Go to Company Website</md-button>
+      </md-card-actions>
+      <md-card-content>
+        <p>
+          {{selected_company.job_desc}}
+        </p>
+      </md-card-content>
+      </md-card>
+
+    </div>
+
     </div>
 
 </div>

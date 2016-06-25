@@ -1,3 +1,29 @@
 <% provide :title, "Help" %>
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+
+<div ng-app='tnpApp' ng-controller='ExampleCtrl'>
+
+  <div class="table-responsive">
+
+    Search: <input ng-model="query">
+
+   <table class="table table-striped">
+
+     <thead>
+       <tr>
+         <th>NAME</th>
+         <th>ID</th>
+       </tr>
+     </thead>
+
+     <tbody>
+         <tr ng-repeat="c in companies | filter: query">
+           <td>{{c.name}}</td>
+           <td>{{c.id}}</td>
+         </tr>
+     </tbody>
+
+   </table>
+
+  </div>
+
+</div>

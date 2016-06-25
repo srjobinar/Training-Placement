@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+   has_many :registers
    belongs_to :branch
    has_many :companies, through: :registers
 

@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(version: 20160527133428) do
     t.string   "email"
     t.string   "roll"
     t.string   "phone"
-    t.integer  "cgpa"
-    t.integer  "x_th"
-    t.integer  "xii_th"
+    t.float    "cgpa"
+    t.float    "x_th"
+    t.float    "xii_th"
     t.integer  "branch_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
