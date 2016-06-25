@@ -1,6 +1,7 @@
 class Company < ActiveRecord::Base
 
   has_many :branchcompanies
+  has_many :registers
   has_many :branches, through: :branchcompanies
   has_many :users, through: :registers
 
