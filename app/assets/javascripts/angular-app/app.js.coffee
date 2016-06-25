@@ -1,5 +1,6 @@
 @app = angular.module('tnpApp', [
-  'templates'
+  'templates',
+  'ngMaterial'
 ])
 
 @app.config([

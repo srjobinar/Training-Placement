@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "angular-material/angular-material.css";
+@import "angular-material/angular-material.scss";
 
 /*mixins,variables*/
 @mixin box_sizing {
@@ -12,7 +14,7 @@
 
 body {
   padding-top: 60px;
-  background-color: #D24D57;
+  // background-color: #D24D57;
 }
 
 section {
@@ -166,7 +168,7 @@ input {
 }
 
 .company-list{
-  background-color: #D24D57;
+  // background-color: #D24D57;
   margin-top: 2px;
   margin-bottom: 2px;
   border-radius: 4px;
@@ -178,35 +180,3 @@ input {
     margin-bottom: 0px;
   }
 }
-
-
-.page_section{
-  li{
-    width: 100%;
-  }
-  list-style: none;
-}
-
-.user_details {
-  h1{
-    margin-bottom: 0px;
-    font-weight: bold;
-    font-size: 32px;
-    text-align: left;
-  }
-}
-
-   .navigation_bar{
-     background-color: black;
-     margin-top: 20px;
-     border-radius: 4px;
-//   padding: 3px;
-//   .row{
-//     margin-left: 1px;
-    }
-//   .navigation_pills{
-//     background-color: #E74C3C;
-//     margin-left: 5px;
-//     border-radius: 5px;
-//   }
-// }
