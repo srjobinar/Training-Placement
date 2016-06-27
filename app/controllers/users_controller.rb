@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   before_action :is_logged_in?, only: [:index, :show, :edit, :update, :getcompanylist]
   def index
     @user = current_user
-    @branch = @user.branch
-    @company = @branch.companies
   end
 
   def new
@@ -62,15 +60,9 @@ class UsersController < ApplicationController
     end
   end
 
-  def getcompanylist
-    @user = current_user
-    @branch = @user.branch
-    @company = @branch.companies
-    render json: @company
-  end
 
-  def register
-    redirect_to users_path
+  def apply
+    current_user.companies << Company.find(params[:id])
   end
 
   private

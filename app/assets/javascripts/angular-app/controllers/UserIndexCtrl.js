@@ -4,7 +4,7 @@ angular.module('tnpApp')
     .controller('UserIndexCtrl', function($scope, companyList) {
 
       companyList.getCompany().success(function(response) {
-          $scope.companies = response;
+          $scope.available = response[0];
       });
 
       $scope.companyType = function(cType) {

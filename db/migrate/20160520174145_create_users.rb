@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.float :cgpa
       t.float :x_th
       t.float :xii_th
-      t.belongs_to :branch, index:true
+      t.boolean :placed, default: false 
+      t.belongs_to :branch, index: true
       t.timestamps null: false
     end
   end

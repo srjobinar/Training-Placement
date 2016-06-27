@@ -8,6 +8,7 @@ class CreateCompanies < ActiveRecord::Migration
       t.date :exam_date
       t.float :cutoff
       t.string :web_url
+      t.integer :flag, default: 1
       t.timestamps null: false
     end
   end

@@ -37,15 +37,17 @@ ActiveRecord::Schema.define(version: 20160527133428) do
     t.date     "exam_date"
     t.float    "cutoff"
     t.string   "web_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "flag",       default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "registers", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "company_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "status",     default: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "registers", ["company_id"], name: "index_registers_on_company_id"
@@ -59,9 +61,10 @@ ActiveRecord::Schema.define(version: 20160527133428) do
     t.float    "cgpa"
     t.float    "x_th"
     t.float    "xii_th"
+    t.boolean  "placed",          default: false
     t.integer  "branch_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
   end
 
