@@ -11,10 +11,10 @@
 
       <div class="col-md-6">
 
-        <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-              <md-nav-item md-nav-click="companyType(0)" name="page1">Available</md-nav-item>
-              <md-nav-item md-nav-click="companyType(1)" name="page2">In Progress</md-nav-item>
-              <md-nav-item md-nav-click="companyType(2)" name="page3">Completed</md-nav-item>
+        <md-nav-bar md-selected-nav-item="cType" nav-bar-aria-label="navigation links">
+              <md-nav-item md-nav-click="companyType(0)" name="avail">Available</md-nav-item>
+              <md-nav-item md-nav-click="companyType(1)" name="prog">In Progress</md-nav-item>
+              <md-nav-item md-nav-click="companyType(2)" name="comp">Completed</md-nav-item>
         </md-nav-bar>
 
       </div>
@@ -27,29 +27,20 @@
 
        Here are the companies that {{ message }}
 
+       <br></br>
+
        Search: <input class="form-control" ng-model="query">
 
-       <div class="table-responsive">
+       <md-list>
+         <md-list-item class="md-3-line" ng-repeat="c in companies" ng-click="selectCompany($index)">
+             <div class="md-list-item-text" layout="column">
+               <h3>{{ c.name }}</h3>
+               <h4>{{ item.job_desc }}</h4>
+               <!-- <p>{{ item.notes }}</p> -->
+             </div>
+         </md-list-item>
+       </md-list>
 
-       <table class="table table-striped">
-
-         <thead>
-           <tr>
-             <th>NAME</th>
-             <th>ID</th>
-           </tr>
-         </thead>
-
-         <tbody>
-             <tr ng-repeat="c in available | filter: query">
-               <td>{{c.name}}</td>
-               <td>{{c.id}}</td>
-             </tr>
-         </tbody>
-
-       </table>
-
-      </div>
     </div>
 
     <div class="col-md-6">
@@ -61,7 +52,9 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-actions layout="row" layout-align="start center">
-        <md-button>{{action_name}}</md-button>
+        <md-button ng-if="cType == 'avail'" ng-click="register(selected_company)">{{action_name}}</md-button>
+        <md-button ng-if="cType == 'prog'" ng-click="status(selected_company)">{{action_name}}</md-button>
+        <md-button ng-if="cType == 'comp'" ng-click="register(selected_company)">{{action_name}}</md-button>
         <md-button>Go to Company Website</md-button>
       </md-card-actions>
       <md-card-content>

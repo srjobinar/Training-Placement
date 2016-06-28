@@ -2,8 +2,8 @@
   "lib": {
      "name": "bower-rails generated lib assets",
      "dependencies": {
-            "angular": "v1.2.25",
-            "angular-material": "^1.0.9"
+            "angular": "^1.5.8",
+            "angular-material": "^1.1.0-rc.5"
           }
   },
   "vendor": {
