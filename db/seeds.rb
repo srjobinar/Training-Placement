@@ -20,7 +20,7 @@ Branch.create(name: "Architecture", code: "AR" , user_id: 9 )
 
 
 (0..14).each do |i|
-  c = Company.create(name: companies[i],web_url: "www.bullfin.ch",flag: rand(2))
+  c = Company.create(name: companies[i],web_url: "www.bullfin.ch",flag: 1)
     branches = Branch.offset(rand(6)).take(3)
     branches.each do |b|
       c.branches << b

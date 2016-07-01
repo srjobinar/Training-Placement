@@ -9,7 +9,7 @@ angular.module('tnpApp').factory('studentRegistration', function($http) {
                 isArray: true,
             })
         },
-        register: function(id) {
+        cancel: function(id) {
             return $http({
                 url: 'http://localhost:3000/cancel/' + id,
                 method: 'POST',
