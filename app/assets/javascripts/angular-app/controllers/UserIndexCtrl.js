@@ -15,6 +15,7 @@ angular.module('tnpApp')
 
         companyList.getCompany().success(function(response) {
             companies = response;
+            console.log(response);
             $scope.companies = companies[0];
             $scope.selected_company = $scope.companies[0];
             $scope.no_companies = $scope.companies.length == 0;
@@ -57,7 +58,7 @@ angular.module('tnpApp')
         var confirm = $mdDialog.confirm()
              .title('Would you like to apply for ' + name + '?' )
              .textContent('Your application will be reviewed by the admin.')
-             .ariaLabel('Lucky day')
+             .ariaLabel('Register Button')
              .targetEvent(ev)
              .ok('Yes')
              .cancel('No');
@@ -78,7 +79,7 @@ angular.module('tnpApp')
         var confirm = $mdDialog.confirm()
              .title('Do you wish to cancel your application for ' + name + '?' )
              .textContent('Your application will be removed.')
-             .ariaLabel('Lucky day')
+             .ariaLabel('Cancel Button')
              .targetEvent(ev)
              .ok('Yes')
              .cancel('No');
