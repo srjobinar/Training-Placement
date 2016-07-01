@@ -14,11 +14,16 @@ class GetrequestController < ApplicationController
 
     def company_by_branch
       @branch = Branch.all
-      @list = []
+      @companies_of_branch = []
       @branch.each do |b|
-       @list << {b.id => b.companies}
+       @companies_of_branch << {b.id => b.companies}
       end
-      render json: [@branch,@list]
+      @registered_users = []
+      @company = Company.all
+      @company.each do |c|
+        @registered_users << {c.id => c.users}
+      end
+      render json: [@branch,@companies_of_branch,@registered_users]
     end
 
 
