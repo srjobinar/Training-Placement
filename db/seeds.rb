@@ -20,7 +20,7 @@ Branch.create(name: "Architecture", code: "AR" , user_id: 9 )
 
 
 (0..14).each do |i|
-  c = Company.create(name: companies[i],web_url: "www.bullfin.ch",flag: rand(2))
+  c = Company.create(name: companies[i],web_url: "www.bullfin.ch",flag: 1)
     branches = Branch.offset(rand(6)).take(3)
     branches.each do |b|
       c.branches << b
@@ -31,5 +31,5 @@ User.create(name: users[u], email: "admin@tnp.com", roll: "Adminroll", password:
 (0..16).each do |u|
   offset = rand(Branch.count)
   rand_record = Branch.offset(offset).first
-  new = User.create(name: users[u], email: "mail_#{u}@tnp.com", roll: ("B130" + (452 + u).to_s + rand_record.code), password: "1234", cgpa: (5 + u%10), phone: "9496120742", branch_id: rand_record.id )
+  new = User.create(name: users[u], email: "mail_#{u}@tnp.com", roll: ("B130" + (452 + u).to_s + rand_record.code), password: "1234", cgpa: (5 + u%5), phone: "9496120742", branch_id: rand_record.id )
 end

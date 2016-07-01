@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "angular-material/angular-material.css";
-@import "angular-material/angular-material.scss";
+@import "angular-material/angular-material.min.css";
 
 /*mixins,variables*/
 @mixin box_sizing {
