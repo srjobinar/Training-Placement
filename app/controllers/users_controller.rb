@@ -62,7 +62,15 @@ class UsersController < ApplicationController
 
 
   def apply
-    current_user.companies << Company.find(params[:id])
+    @user = current_user
+    @user.companies << Company.find(params[:id])
+    Register.save
+  end
+
+  def cancel_application
+    @user = current_user
+    @company = Company.find(params[:id])
+    @company.users.delete(@user)    
   end
 
   private
