@@ -12,6 +12,15 @@ class GetrequestController < ApplicationController
       render json: @company
     end
 
+    def company_by_branch
+      @branch = Branch.all
+      @list = []
+      @branch.each do |b|
+       @list << {b.id => b.companies}
+      end
+      render json: [@branch,@list]
+    end
+
 
   private
 

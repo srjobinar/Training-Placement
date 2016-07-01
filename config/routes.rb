@@ -17,10 +17,18 @@ Rails.application.routes.draw do
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
+  get 'admin_login' => 'sessions#new_admin'
+  post 'admin_login' => 'sessions#create_admin'
   delete 'logout' => 'sessions#destroy'
 
+  get 'admin' => 'admin#index'
+  get 'stats' => 'admin#stats'
+
+
   get '/company_list' => 'getrequest#getcompanylist'
+  get '/company_by_branch' => 'getrequest#company_by_branch'
   post '/apply/:id' => 'users#apply'
+  post '/cancel/:id' => 'users#cancel_application'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
