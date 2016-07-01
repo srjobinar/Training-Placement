@@ -1,36 +1,50 @@
 'use strict';
 
 angular.module('tnpApp')
-    .controller('UserIndexCtrl', function($scope, $mdDialog, companyList) {
+    .controller('UserIndexCtrl', function($scope, $mdDialog, companyList, studentRegistration) {
 
       // Throw this into an init?
 
-      companyList.getCompany().success(function(response) {
-          $scope.available = response[0];
-      });
+      var companies;
 
-      $scope.cType = "avail";
-      $scope.message = "you can apply for";
-      $scope.action_name = "Register";
+      $scope.init = function() {
 
-      $scope.selected_company = {
-        name : "Company Something",
-        job_desc : "There will be some logic to selecting this..."
+        $scope.cType = "AVAILABLE";
+        $scope.message = "you can apply for";
+        $scope.action_name = "Register";
+
+        companyList.getCompany().success(function(response) {
+            companies = response;
+            $scope.companies = companies[0];
+            $scope.selected_company = $scope.companies[0];
+            $scope.no_companies = $scope.companies.length == 0;
+        });
       }
+
+      $scope.init();
 
       $scope.companyType = function(cType) {
         if (cType == 0) {
-          $scope.cType = "avail";
+          $scope.cType = "AVAILABLE";
           $scope.message = "you can apply for";
           $scope.action_name = "Register";
+          $scope.companies = companies[0];
+          $scope.no_companies = $scope.companies.length == 0;
+          $scope.selected_company = $scope.companies[0];
         } else if (cType == 1) {
-          $scope.cType = "prog";
+          $scope.cType = "APPLIED";
           $scope.message = "you have been registered to appear for";
-          $scope.action_name = "Check Status";
+          $scope.action_name = "Cancel";
+          $scope.companies = companies[1];
+          $scope.no_companies = $scope.companies.length == 0;
+          $scope.selected_company = $scope.companies[0];
         } else if (cType == 2) {
-          $scope.cType = "comp";
+          $scope.cType = "REGISTERED";
           $scope.message = "have completed their procedure";
-          $scope.action_name = "View Results";
+          $scope.action_name = "View List";
+          $scope.companies = companies[2];
+          $scope.no_companies = $scope.companies.length == 0;
+          $scope.selected_company = $scope.companies[0];
         }
       }
 
@@ -38,25 +52,45 @@ angular.module('tnpApp')
           $scope.selected_company = $scope.companies[index];
       }
 
-      $scope.register = function() {
+      $scope.register = function(ev, name, id) {
 
-         var confirm = $mdDialog.prompt()
-            .title('What would you name your zone?')
-            .textContent('Bowser is a common name.')
-            .placeholder('Zone name')
-            .ariaLabel('Zone Name')
-            .initialValue('New Zone')
-            .targetEvent(ev)
-            .ok('Okay!')
-            .cancel('Cancel');
+        var confirm = $mdDialog.confirm()
+             .title('Would you like to apply for ' + name + '?' )
+             .textContent('Your application will be reviewed by the admin.')
+             .ariaLabel('Lucky day')
+             .targetEvent(ev)
+             .ok('Yes')
+             .cancel('No');
 
-          $mdDialog.show(confirm).then(function(result) {
+        $mdDialog.show(confirm).then(function() {
+          studentRegistration.register(id).success(function(response) {
+            $scope.init();
+          }).error(function(error) {
+          })
+        }, function() {
 
+        });
 
-          }, function() {
+      }
 
-          });
+      $scope.cancel = function(ev, name, id) {
 
+        var confirm = $mdDialog.confirm()
+             .title('Do you wish to cancel your application for ' + name + '?' )
+             .textContent('Your application will be removed.')
+             .ariaLabel('Lucky day')
+             .targetEvent(ev)
+             .ok('Yes')
+             .cancel('No');
+
+        $mdDialog.show(confirm).then(function() {
+          studentRegistration.cancel(id).success(function(response) {
+            $scope.init();
+          }).error(function(error) {
+          })
+        }, function() {
+
+        });
 
       }
 

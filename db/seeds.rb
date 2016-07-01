@@ -31,5 +31,5 @@ User.create(name: users[u], email: "admin@tnp.com", roll: "Adminroll", password:
 (0..16).each do |u|
   offset = rand(Branch.count)
   rand_record = Branch.offset(offset).first
-  new = User.create(name: users[u], email: "mail_#{u}@tnp.com", roll: ("B130" + (452 + u).to_s + rand_record.code), password: "1234", cgpa: (5 + u%10), phone: "9496120742", branch_id: rand_record.id )
+  new = User.create(name: users[u], email: "mail_#{u}@tnp.com", roll: ("B130" + (452 + u).to_s + rand_record.code), password: "1234", cgpa: (5 + u%5), phone: "9496120742", branch_id: rand_record.id )
 end
