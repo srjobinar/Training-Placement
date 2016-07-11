@@ -26,3 +26,12 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+
+
+******Instruction***********
+
+1. Company_by_branch new format => [[branch1,[[comp1,users],[comp2,users]]],[branch2,[[comp1,users],[comp2,users]]]]
+2. Confirm application (in admin controller) is for confirming application.
+3. Shortlist is for final shortlisted candidates.
+4. stats is for particular company stats.

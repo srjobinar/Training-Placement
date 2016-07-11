@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20160527133428) do
   create_table "branchcompanies", force: :cascade do |t|
     t.integer "branch_id"
     t.integer "company_id"
+    t.integer "state",      default: 1
   end
 
   add_index "branchcompanies", ["branch_id"], name: "index_branchcompanies_on_branch_id"

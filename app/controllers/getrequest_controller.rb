@@ -4,10 +4,10 @@ class GetrequestController < ApplicationController
     def getcompanylist
       @user = current_user
       @branch = @user.branch
-      @available = @branch.companies.where("flag = ?", 1) - @user.companies
+      @available = @branch.companies.where("state = ?", 1) - @user.companies
       @applied = @user.companies.where("status = ?", 1)
       @registered = @user.companies.where("status = ?", 2)
-      @completed = @user.companies.where("flag = ?", 2)
+      @completed = @branch.companies.where("flag = ?", 2)
       @company = [@available,@applied,@registered,@completed]
       render json: @company
     end
@@ -16,14 +16,21 @@ class GetrequestController < ApplicationController
       @branch = Branch.all
       @companies_of_branch = []
       @branch.each do |b|
-       @companies_of_branch << {b.id => b.companies}
+        @temp = []
+        b.companies.includes(:branchcompanies).each do |c|
+          @temp << [c,c.users.where("status = ?",c.branchcompanies.first.state)]
+        end
+        @companies_of_branch << [b,@temp]
       end
-      @registered_users = []
-      @company = Company.all
-      @company.each do |c|
-        @registered_users << {c.id => c.users}
-      end
-      render json: [@branch,@companies_of_branch,@registered_users]
+      render json: @companies_of_branch
+    end
+
+    def company_stats
+      @company = Company.find(params[:id])
+      @applied = @company.users
+      @registered = @company.users.where("status = ?", 2)
+      @placed = @company.users.where("status = ?", 3)
+      render json: [@applied,@registered,@placed]
     end
 
 

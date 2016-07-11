@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get '/company_by_branch' => 'getrequest#company_by_branch'
   post '/apply/:id' => 'users#apply'
   post '/cancel/:id' => 'users#cancel_application'
+  post '/confirm/:branch/:company/:list' => 'admin#confirm_application'
+  post '/shortlist/:branch/:company/:list' => 'admin#confirm_application'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
